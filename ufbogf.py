@@ -20,7 +20,7 @@ else:
 
 
 def randomip():
-  randip = ".".join(str(random.randint(0, 255)) for _ in range(4))
+  randip = ".".join(str(random.randint(0, 900)) for _ in range(4))
   return randip
 
 
