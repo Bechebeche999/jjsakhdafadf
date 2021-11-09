@@ -4,6 +4,8 @@ from time import sleep
 import multiprocessing
 import random
 import platform
+from random import choice
+
 def random_data():
     return str(Choice(strings) + str(Intn(0, 271400281257)) + Choice(strings) + str(Intn(0, 271004281257)) + Choice(
         strings) + Choice(strings) + str(Intn(0, 271400281257)) + Choice(strings) + str(Intn(0, 271004281257)) + Choice(
